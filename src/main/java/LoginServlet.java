@@ -9,11 +9,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
 
-@WebServlet("/login")
+@WebServlet("/")
 public class LoginServlet extends HttpServlet{
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setAttribute("name", "Andriy");
+//        req.setAttribute("name", "Andriy");
         req.getRequestDispatcher("index.jsp").forward(req, resp);
     }
 
@@ -29,7 +29,8 @@ public class LoginServlet extends HttpServlet{
             RequestDispatcher requestDispatcher = req.getRequestDispatcher("login_success.jsp");
             requestDispatcher.forward(req, resp);
         }else {
-            resp.sendRedirect("index.jsp");
+            req.setAttribute("validLogin", false);
+            req.getRequestDispatcher("index.jsp").forward(req,resp);
         }
     }
 }

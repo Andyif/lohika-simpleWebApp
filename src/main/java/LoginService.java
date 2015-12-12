@@ -1,20 +1,25 @@
 import model.User;
 
+import java.util.Date;
+
 public class LoginService {
 
-    private User user;
+    private static User user = new User();
 
-    public LoginService() {
-        this.user = new User();
-        this.user.setName("admin");
-        this.user.setPassword("admin");
-    }
+//    public LoginService() {
+//        this.user = new User();
+//        this.user.setName("admin");
+//        this.user.setPassword("admin");
+//    }
 
     public boolean isValidUser(String name, String password) {
-        if (name.equals(user.getName()) && password.equals(user.getPassword())){
-            return true;
-        } else {
+        if (name.isEmpty() || password.isEmpty()){
             return false;
+        } else {
+            user.setEntryDate(new Date());
+            user.setName(name);
+            user.setPassword(password);
+            return true;
         }
     }
 

@@ -11,6 +11,6 @@
         User user=(User)request.getAttribute("user");
         %>
         <h1>Hello <%=user.getName()%></h1>
-        <h2>You have successfully logged in</h2>
+        <h2>Last time you have successfully logged in at <%=user.getEntryDate()%></h2>
     </body>
 </html>
